@@ -58,5 +58,149 @@
         "title": "Stadtteilzentrum Stöcken",
         "category": "",
         "thumbnail": "010_stadtteilzentrum_stoecken/00_Stoecken-Visualisierung_2-1024x576.jpg"
+    },
+    {
+        "id": "011_rathaus_hohenneuendorf",
+        "title": "Rathaus Hohenneuendorf",
+        "category": "",
+        "thumbnail": "011_rathaus_hohenneuendorf/00_Rathaus_Frontansicht.jpg"
+    },
+    {
+        "id": "012_wettbewerb__3_preis",
+        "title": "Wettbewerb | 3. Preis",
+        "category": "",
+        "thumbnail": "012_wettbewerb__3_preis/00_NeuesWohnenOchtersum_Hofansicht.jpg"
+    },
+    {
+        "id": "013_brauerei_leipzig",
+        "title": "BRAUEREI LEIPZIG",
+        "category": "",
+        "thumbnail": "013_brauerei_leipzig/00_Leipzig_V_Vogelsperspektive-1024x576.jpg"
+    },
+    {
+        "id": "014_wettbewerb__3_preis",
+        "title": "Wettbewerb | 3. Preis",
+        "category": "",
+        "thumbnail": "014_wettbewerb__3_preis/00_CityCenterSesse_Perspektive-1024x576.jpg"
+    },
+    {
+        "id": "015_akk_laatzen",
+        "title": "AKK Laatzen",
+        "category": "",
+        "thumbnail": "015_akk_laatzen/00_IR_KRH-Laatzen_Zimmer_3-1024x576.jpg"
+    },
+    {
+        "id": "016_paulus_gemeinde_bremen",
+        "title": "Paulus Gemeinde Bremen",
+        "category": "",
+        "thumbnail": "016_paulus_gemeinde_bremen/00_Paulus-Gemeinde_Scheune_2-1024x576.jpg"
+    },
+    {
+        "id": "017_feg_kaltenweide",
+        "title": "FeG Kaltenweide",
+        "category": "",
+        "thumbnail": "017_feg_kaltenweide/00_FeG-Kaltenweide_Visualisierung_Saalansicht-1024x576.jpg"
+    },
+    {
+        "id": "018_peter_schneider",
+        "title": "Peter Schneider",
+        "category": "",
+        "thumbnail": "018_peter_schneider/00_SB_PeterSchneider_Wartebereich-1024x576.jpg"
+    },
+    {
+        "id": "019_q207",
+        "title": "Q207",
+        "category": "",
+        "thumbnail": "019_q207/00_Q207_Büro_3-576x1024.jpg"
+    },
+    {
+        "id": "020_fassadensanierung",
+        "title": "Fassadensanierung",
+        "category": "Eberhard Franke Fotografie",
+        "thumbnail": "020_fassadensanierung/00_Nordzucker_Fassade_4-1024x576.jpg"
+    },
+    {
+        "id": "021_domiziel_dedenhausen",
+        "title": "Domiziel Dedenhausen",
+        "category": "",
+        "thumbnail": "021_domiziel_dedenhausen/00_SB_N_Domiziel_MZR-1024x576.jpg"
+    },
+    {
+        "id": "022_hautarztpraxis_hannover",
+        "title": "HAUTARZTPRAXIS HANNOVER",
+        "category": "",
+        "thumbnail": "022_hautarztpraxis_hannover/00_SB_Hautarztpraxis_Wartebereich-1024x576.jpg"
+    },
+    {
+        "id": "023_nordzucker_kantine",
+        "title": "Nordzucker Kantine",
+        "category": "",
+        "thumbnail": "023_nordzucker_kantine/00_Nordzucker_Kantine_4-1024x576.jpg"
+    },
+    {
+        "id": "024_modernisierung",
+        "title": "Modernisierung",
+        "category": "Eberhard Franke Fotografie",
+        "thumbnail": "024_modernisierung/00_IR_Sindelfingen_Foyer_3-1024x576.jpg"
+    },
+    {
+        "id": "025_mecklenburgische_kantine",
+        "title": "Mecklenburgische Kantine",
+        "category": "",
+        "thumbnail": "025_mecklenburgische_kantine/00_IR_Mecklenburgische_Möbeldetail-1024x576.jpg"
+    },
+    {
+        "id": "026_mecklenburgstrasse_b150",
+        "title": "Mecklenburgstraße B150",
+        "category": "",
+        "thumbnail": "026_mecklenburgstrasse_b150/00_IR_Mecklenburgische_B150_Lobby_4-1024x576.jpg"
+    },
+    {
+        "id": "027_daimler_boeblingen",
+        "title": "Daimler Böblingen",
+        "category": "",
+        "thumbnail": "027_daimler_boeblingen/00_IR_Daimler_BB_Foyer_2-1024x576.jpg"
+    },
+    {
+        "id": "028_harsum",
+        "title": "Harsum",
+        "category": "",
+        "thumbnail": "028_harsum/00_Haus_K_Harsum_Garten-1024x576.jpg"
+    },
+    {
+        "id": "029_schusterbleek",
+        "title": "Schusterbleek",
+        "category": "",
+        "thumbnail": "029_schusterbleek/00_Haus_gbg_Schusterbleek_Aussenansicht_2-1024x576.jpg"
+    },
+    {
+        "id": "030_pippelsburg",
+        "title": "Pippelsburg",
+        "category": "",
+        "thumbnail": "030_pippelsburg/00_Haus_gbg_Pippelsburg_Garten-1024x576.jpg"
+    },
+    {
+        "id": "031_wohnpark_bad_harzburg",
+        "title": "Wohnpark Bad Harzburg",
+        "category": "",
+        "thumbnail": "031_wohnpark_bad_harzburg/00_BadHarzburg_Aussenansicht_2-1024x576.jpg"
+    },
+    {
+        "id": "032_entwurf_neubau",
+        "title": "Entwurf Neubau",
+        "category": "",
+        "thumbnail": "032_entwurf_neubau/00_Haus-W_Konzept-1024x576.jpg"
+    },
+    {
+        "id": "033_haus_h",
+        "title": "Haus H",
+        "category": "",
+        "thumbnail": "033_haus_h/00_Haus-H_Garten-1-1024x576.jpg"
+    },
+    {
+        "id": "034_strassenverkehrsamt_pinneberg",
+        "title": "Straßenverkehrsamt Pinneberg",
+        "category": "",
+        "thumbnail": "034_strassenverkehrsamt_pinneberg/00_SV_KPI-Tresen-1024x576.jpg"
     }
 ]

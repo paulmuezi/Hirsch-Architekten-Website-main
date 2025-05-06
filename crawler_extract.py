@@ -15,7 +15,7 @@ ALLOWED_DOMAIN = urlparse(START_URL).netloc
 OUTPUT_DATA_DIR = "public/projekt_daten"  # Ordner für extrahierte Daten im public-Ordner
 REQUEST_DELAY = 1
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-MAX_PROJECTS_TO_CRAWL = 10 # Erhöhe Limit ggf., um mehr Projekte zu holen
+MAX_PROJECTS_TO_CRAWL = 1000 # Erhöhe Limit ggf., um mehr Projekte zu holen
 
 # --- Hilfsfunktionen ---
 def sanitize_for_foldername(text):
