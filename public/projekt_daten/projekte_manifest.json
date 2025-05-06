@@ -16,5 +16,47 @@
         "title": "Orleansstraße",
         "category": "",
         "thumbnail": "003_orleansstrasse/00_Haus_gbg_Orleansstra·e_Frontansicht_2-1024x576.jpg"
+    },
+    {
+        "id": "004_ostend_block9",
+        "title": "Ostend Block9",
+        "category": "",
+        "thumbnail": "004_ostend_block9/00_Ostend_Block9_Lageplan-1024x576.jpg"
+    },
+    {
+        "id": "005_entwurf_neubau",
+        "title": "Entwurf Neubau",
+        "category": "Eberhard Franke Fotografie",
+        "thumbnail": "005_entwurf_neubau/00_Haus-G_Garten-Abend_2-1024x576.jpg"
+    },
+    {
+        "id": "006_hannover_rueck",
+        "title": "HANNOVER RÜCK",
+        "category": "",
+        "thumbnail": "006_hannover_rueck/00_HannoverRe_Flur_Empfang_1-1024x576.jpg"
+    },
+    {
+        "id": "007_modernisierung_und_umnutzung",
+        "title": "Modernisierung und Umnutzung",
+        "category": "",
+        "thumbnail": "007_modernisierung_und_umnutzung/00_Kreis_Pinneberg_Fassade_1-576x1024.jpg"
+    },
+    {
+        "id": "008_neubau_und_erweiterung",
+        "title": "Neubau und Erweiterung",
+        "category": "",
+        "thumbnail": "008_neubau_und_erweiterung/00_Braunschweiger_Friedenskirche_Kreutz_Detail.jpg"
+    },
+    {
+        "id": "009_neugestaltung",
+        "title": "Neugestaltung",
+        "category": "",
+        "thumbnail": "009_neugestaltung/00_Hindenburgplatz-Hildesheim_6-1024x576.jpg"
+    },
+    {
+        "id": "010_stadtteilzentrum_stoecken",
+        "title": "Stadtteilzentrum Stöcken",
+        "category": "",
+        "thumbnail": "010_stadtteilzentrum_stoecken/00_Stoecken-Visualisierung_2-1024x576.jpg"
     }
 ]
