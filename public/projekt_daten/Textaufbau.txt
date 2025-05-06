@@ -1,0 +1,11 @@
+Projekt Titel Zeile 1
+Projekt Kategorie Zeile 2 (optional, leer lassen wenn keine)
+Erster Absatz der Beschreibung.
+Kann über mehrere Zeilen gehen.
+
+Zweiter Absatz der Beschreibung.
+
+---Bilder---
+erstes_bild.jpg
+02_detail.png
+wichtige_ansicht.webp
