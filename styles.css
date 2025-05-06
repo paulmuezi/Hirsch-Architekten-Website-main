@@ -442,18 +442,20 @@ section {
 
 /* Projects section styles */
 .projects {
-  background-color: var(--color-neutral-100);
+  background-color: var(--color-neutral-100); /* Für Homepage Section */
 }
 
-.all-projects {
+.all-projects { /* Für die alle Projekte Seite (projects.html) */
   padding-top: 100px;
   padding-bottom: 5rem;
-  background-color: var(--color-white);
+  background-color: var(--color-white); /* Kann auch neutral-100 sein, je nach Wunsch */
 }
 
-.projects-grid {
+/* Gemeinsames Styling für beide Projekt-Grids */
+#projects .projects-grid, /* Grid auf der Homepage */
+.all-projects-grid {      /* Grid auf der projects.html Seite */
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr); /* Standard: 4 Spalten */
   gap: 1.5rem;
 }
 
@@ -532,7 +534,7 @@ section {
   color: var(--color-neutral-600);
 }
 
-.all-projects .section-header {
+.all-projects .section-header { /* Header innerhalb der .all-projects Sektion */
     text-align: left;
     margin-bottom: 3rem;
 }
@@ -844,8 +846,9 @@ section {
 
 /* Media Queries */
 @media (max-width: 1024px) {
-  .projects-grid {
-    grid-template-columns: repeat(3, 1fr);
+  #projects .projects-grid,
+  .all-projects-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 Spalten für beide Grids */
   }
    .team-member-grid {
        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -923,10 +926,6 @@ section {
     border-bottom: none;
   }
 
-  /* About Section Anpassungen */
-  /* .about-grid (alt) wird nicht mehr auf Mobil angepasst, da entfernt */
-  /* .about-columns Regel von 992px greift hier weiterhin */
-
   .about-summary {
       max-width: 90%;
       margin-bottom: 2rem;
@@ -939,7 +938,7 @@ section {
   .about-details,
   .all-projects,
   .jobs-page,
-  .project-detail-page { /* Detailseite auch anpassen */
+  .project-detail-page {
       padding-top: 80px;
       padding-bottom: 3rem;
   }
@@ -949,9 +948,9 @@ section {
       gap: 1.5rem;
   }
 
-  /* Projects Section Anpassungen */
-  .projects-grid {
-     grid-template-columns: repeat(2, 1fr);
+  #projects .projects-grid,
+  .all-projects-grid {
+     grid-template-columns: repeat(2, 1fr); /* 2 Spalten für beide Grids */
     gap: 1rem;
   }
 
@@ -960,16 +959,12 @@ section {
     }
 
 
-  /* Andere Layout Anpassungen */
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
 
-  /* Footer Grid entfernt */
-  /* .footer-grid { ... } */
-
-   section:not(.jobs-page):not(.about-details):not(.all-projects):not(.project-detail-page) { /* Füge Detailseite zur Ausnahme hinzu */
+   section:not(.jobs-page):not(.about-details):not(.all-projects):not(.project-detail-page) {
      padding: 3rem 0;
    }
 
@@ -980,18 +975,18 @@ section {
 }
 
 @media (max-width: 576px) {
-
-   .all-projects .projects-grid {
-     grid-template-columns: 1fr;
-   }
-
-   #projects .projects-grid {
+   /*
+     Auf kleinsten Screens sollen beide Grids (Homepage und Alle Projekte)
+     zwei Spalten haben, um konsistent zu sein.
+   */
+   #projects .projects-grid, /* Homepage Grid */
+   .all-projects-grid {     /* Alle Projekte Seite Grid */
      grid-template-columns: repeat(2, 1fr);
      gap: 1rem;
    }
 
     .project-gallery {
-       grid-template-columns: 1fr; /* Eine Spalte auf kleinsten Screens */
+       grid-template-columns: 1fr; /* Eine Spalte auf kleinsten Screens für Detailseiten-Galerie */
        gap: 1.5rem;
     }
 
@@ -1008,7 +1003,7 @@ section {
    }
 
     .team-member-grid {
-      grid-template-columns: repeat(2, 1fr); /* Immer 2 Spalten */
+      grid-template-columns: repeat(2, 1fr); 
       gap: 1rem;
    }
 
@@ -1027,7 +1022,7 @@ section {
     .about-details,
     .all-projects,
     .jobs-page,
-    .project-detail-page { /* Detailseite auch anpassen */
+    .project-detail-page {
         padding-top: 70px;
     }
 
@@ -1053,3 +1048,4 @@ section {
     display: none;
   }
 }
+/* --- END OF FILE styles.css --- */
