@@ -1,11 +1,11 @@
-<!-- START OF FILE projekt_template.html -->
+<!-- START OF FILE member_detail.html -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{PROJEKT_TITEL}} - Hirsch Architekten</title> <!-- Platzhalter -->
-    <meta name="description" content="Details zum Projekt {{PROJEKT_TITEL}} von Hirsch Architekten. {{BESCHREIBUNG_KURZ}}"> <!-- Platzhalter -->
+    <title>Teammitglied Details - Hirsch Architekten</title> <!-- Titel wird per JS gesetzt -->
+    <meta name="description" content="Details zu einem Teammitglied von Hirsch Architekten.">
     <link rel="icon" href="https://hirsch-architekten.com/wp-content/uploads/2017/09/Hirsch_Architekten_Logo_Bildmarke-1.jpg" sizes="32x32" />
     <link rel="icon" href="https://hirsch-architekten.com/wp-content/uploads/2017/09/Hirsch_Architekten_Logo_Bildmarke-1.jpg" sizes="192x192" />
     <link rel="apple-touch-icon" href="https://www.hirsch-architekten.com/wp-content/uploads/2017/09/Hirsch_Architekten_Logo_Bildmarke-1.jpg" />
@@ -13,11 +13,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <!-- Kein GPT Engineer Script nötig, da statisch -->
 </head>
 <body>
     <div id="root">
-        <!-- Navigation -->
+        <!-- Navigation (wie auf anderen Seiten) -->
         <nav class="navbar">
             <div class="container">
               <div class="navbar-content">
@@ -49,27 +48,40 @@
 
         <!-- Main Content -->
         <main>
-            <section class="project-detail-page"> <!-- Wiederverwendung des Stylings -->
+            <section class="team-member-detail-page" id="member-content-section" style="display: none;">
                 <div class="container">
-                    <div class="project-content-container">
-                        <div class="project-header">
-                            <h1>{{PROJEKT_TITEL}}</h1> <!-- Platzhalter -->
+                    <div class="team-member-header">
+                        <div class="team-member-detail-photo">
+                            <img id="member-image" src="https://via.placeholder.com/250x320?text=Foto" alt="Foto des Teammitglieds">
                         </div>
-                        <div class="project-description">
-                            {{PROJEKT_BESCHREIBUNG_HTML}} <!-- Platzhalter -->
+                        <div class="team-member-intro">
+                            <h1 id="member-name">Name wird geladen...</h1>
+                            <p class="position" id="member-position">Position...</p>
+                            <div class="contact-details-inline">
+                                <p id="member-email-container" style="display: none;">
+                                    <a id="member-email-link" href="#">E-Mail wird geladen...</a>
+                                </p>
+                                <p id="member-phone-container" style="display: none;">
+                                    <a id="member-phone-link" href="#">Telefon wird geladen...</a>
+                                </p>
+                            </div>
                         </div>
-                        <div class="project-gallery">
-                            {{PROJEKT_GALERIE_HTML}} <!-- Platzhalter -->
-                        </div>
-                         <div class="back-link-container">
-                            <a href="projects.html" class="back-link">← Zurück zur Projektübersicht</a>
-                        </div>
+                    </div>
+                    <div class="team-member-description" id="member-description">
+                        <p>Beschreibung wird geladen...</p>
+                    </div>
+                    <div class="back-link-container" style="margin-top: 3rem;">
+                        <a href="about.html#team" class="back-link">← Zurück zur Teamübersicht</a>
                     </div>
                 </div>
             </section>
+            <section id="member-error-section" class="project-error-message" style="display: none; padding-top: 120px;">
+                <p>Das angeforderte Teammitglied konnte nicht gefunden werden.</p>
+                <a href="about.html#team" class="btn">Zurück zur Teamübersicht</a>
+            </section>
         </main>
 
-        <!-- Footer -->
+        <!-- Footer (wie auf anderen Seiten) -->
         <footer class="footer">
             <div class="container">
               <div class="footer-bottom">
@@ -86,10 +98,7 @@
               </div>
             </div>
           </footer>
-
-         <!-- Impressum Modal (identisch) -->
-          <div id="impressum" class="modal">
-            <!-- Inhalt des Impressum Modals hier einfügen (wie in index.html) -->
+         <div id="impressum" class="modal">
            <div class="modal-content">
              <div class="container">
                <h2>Impressum</h2>
@@ -107,8 +116,7 @@
            </div>
           </div>
     </div>
-    <!-- Einfaches JS nur für Navbar, Modal, Jahr -->
     <script src="scripts.js"></script>
 </body>
 </html>
-<!-- END OF FILE projekt_template.html -->
+<!-- END OF FILE member_detail.html -->

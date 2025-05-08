@@ -1,0 +1,114 @@
+[
+    {
+        "id": "01_sven_hirsch",
+        "name": "Sven Hirsch",
+        "firstName": "Sven",
+        "lastName": "Hirsch",
+        "position": "Architekt BDA",
+        "image": "01_sven_hirsch/Bild.jpg"
+    },
+    {
+        "id": "02_judith_fuhrhop",
+        "name": "Judith Fuhrhop",
+        "firstName": "Judith",
+        "lastName": "Fuhrhop",
+        "position": "Assistentin der Geschäftsführung",
+        "image": "02_judith_fuhrhop/judith_fuhrhop.jpg"
+    },
+    {
+        "id": "03_kristina_mueller",
+        "name": "Kristina Müller",
+        "firstName": "Kristina",
+        "lastName": "Müller",
+        "position": "Dipl.-Ing. (FH) Architektin",
+        "image": "03_kristina_mueller/kristina_mueller.jpg"
+    },
+    {
+        "id": "04_franziska_franz-porstein",
+        "name": "Franziska Franz-Porstein",
+        "firstName": "Franziska",
+        "lastName": "Franz-Porstein",
+        "position": "Dipl.-Ing. (FH) Architektin",
+        "image": "04_franziska_franz-porstein/franziska_franz-porstein.jpg"
+    },
+    {
+        "id": "05_helge_hass",
+        "name": "Helge Hass",
+        "firstName": "Helge",
+        "lastName": "Hass",
+        "position": "M.A.",
+        "image": "05_helge_hass/helge_hass.jpg"
+    },
+    {
+        "id": "06_ronald_wascher",
+        "name": "Ronald Wascher",
+        "firstName": "Ronald",
+        "lastName": "Wascher",
+        "position": "Dipl.-Ing. (FH) Architekt",
+        "image": "06_ronald_wascher/ronald_wascher.jpg"
+    },
+    {
+        "id": "07_ulrich_claus",
+        "name": "Ulrich Claus",
+        "firstName": "Ulrich",
+        "lastName": "Claus",
+        "position": "Bauzeichner",
+        "image": "07_ulrich_claus/ulrich_claus.jpg"
+    },
+    {
+        "id": "08_sven_peters",
+        "name": "Sven Peters",
+        "firstName": "Sven",
+        "lastName": "Peters",
+        "position": "freier Architekt",
+        "image": "08_sven_peters/sven_peters.jpg"
+    },
+    {
+        "id": "09_elena_casero",
+        "name": "Elena Casero",
+        "firstName": "Elena",
+        "lastName": "Casero",
+        "position": "M.Sc.",
+        "image": "09_elena_casero/elena_casero.jpg"
+    },
+    {
+        "id": "10_pauline_merkle",
+        "name": "Pauline Merkle",
+        "firstName": "Pauline",
+        "lastName": "Merkle",
+        "position": "M.A.",
+        "image": "10_pauline_merkle/pauline_merkle.jpg"
+    },
+    {
+        "id": "11_clara_adolphi",
+        "name": "Clara Adolphi",
+        "firstName": "Clara",
+        "lastName": "Adolphi",
+        "position": "B.A.",
+        "image": "11_clara_adolphi/clara_adolphi.jpg"
+    },
+    {
+        "id": "12_finn_forner",
+        "name": "Finn Forner",
+        "firstName": "Finn",
+        "lastName": "Forner",
+        "position": "M.Sc.",
+        "image": "12_finn_forner/finn_forner.jpg"
+    },
+    {
+        "id": "13_paul_mueller-zitzke",
+        "name": "Paul Müller-Zitzke",
+        "firstName": "Paul",
+        "lastName": "Müller-Zitzke",
+        "position": "M.Sc.",
+        "image": "13_paul_mueller-zitzke/Bild.jpg"
+    },
+    {
+        "id": "14_marcel_hagedorn",
+        "name": "Marcel Hagedorn",
+        "firstName": "Marcel",
+        "lastName": "Hagedorn",
+        "position": "B.A.",
+        "image": "14_marcel_hagedorn/marcel_hagedorn.jpg"
+    }
+]

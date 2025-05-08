@@ -3,13 +3,20 @@
 :root {
   --color-white: #ffffff;
   --color-black: #000000;
-  --color-neutral-100: #F1F0FB;
-  --color-neutral-200: #aaadb0;
+  --color-neutral-100: #F1F0FB; /* Sehr helles Grau/Lavendel */
+  --color-neutral-200: #E0E0E0; /* Helleres Grau für Linien etc. */
   --color-neutral-300: #9F9EA1;
   --color-neutral-400: #8A898C;
   --color-neutral-500: #8E9196;
-  --color-neutral-600: #403E43;
-  --color-neutral-700: #1A1F2C;
+  --color-neutral-600: #403E43; /* Dunkles Grau für Text */
+  --color-neutral-700: #1A1F2C; /* Fast Schwarz für Hauptüberschriften */
+
+  /* NEUE Akzentfarbe und passende helle Töne */
+  --color-accent: #C06C58; /* Gedämpftes Terrakotta/Rostrot */
+  --color-accent-darker: #A05A4C; /* Dunklere Variante für Hover etc. */
+  --color-background-warm: #FAF7F5; /* Sehr helles, warmes Beige für Hintergründe */
+  --font-primary: 'Inter', sans-serif;
+  --font-secondary: 'Montserrat', sans-serif;
 }
 
 * {
@@ -24,24 +31,30 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-primary);
   color: var(--color-neutral-600);
-  line-height: 1.6;
-  font-size: 16px;
+  line-height: 1.7; /* Etwas mehr Zeilenabstand für bessere Lesbarkeit */
+  font-size: 16px; /* Basis Schriftgröße */
   background-color: var(--color-white);
   margin: 0;
   height: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-secondary);
   font-weight: 600;
   color: var(--color-neutral-700);
+  line-height: 1.3; /* Angepasster Zeilenabstand für Überschriften */
 }
 
 a {
   text-decoration: none;
-  color: inherit;
+  color: var(--color-accent); /* Links bekommen die Akzentfarbe */
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-accent-darker); /* Dunklere Akzentfarbe im Hover */
 }
 
 img {
@@ -54,26 +67,40 @@ img {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1.5rem; /* Etwas mehr Padding im Container */
 }
 
 .btn {
   display: inline-block;
-  background-color: var(--color-neutral-700);
+  background-color: var(--color-accent); /* Akzentfarbe für Buttons */
   color: var(--color-white);
-  padding: 12px 24px;
+  padding: 12px 28px; /* Etwas mehr Padding */
   font-weight: 500;
-  transition: background-color 0.3s ease, filter 0.3s ease;
-  filter: brightness(1);
+  font-family: var(--font-secondary); /* Montserrat für Buttons */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: none; /* Entferne Standard-Border */
+  cursor: pointer;
+  border-radius: 4px; /* Leicht abgerundete Ecken */
 }
 
 .btn:hover {
-  background-color: #2a303f;
-  filter: brightness(0.9);
+  background-color: var(--color-accent-darker);
+  transform: translateY(-2px); /* Leichter Hover-Effekt */
 }
 
+/* Sekundärer Button-Stil (z.B. für "Zurück zur Seite" im Modal) */
+.btn.btn-secondary {
+    background-color: var(--color-neutral-200);
+    color: var(--color-neutral-700);
+}
+.btn.btn-secondary:hover {
+    background-color: var(--color-neutral-300);
+    color: var(--color-neutral-700);
+}
+
+
 section {
-  padding: 5rem 0;
+  padding: 6rem 0; /* Mehr Padding für Sektionen */
 }
 
 /* Navbar styles */
@@ -85,12 +112,14 @@ section {
   z-index: 1000;
   transition: all 0.3s ease;
   padding: 1.5rem 0;
-  background-color: var(--color-white);
+  background-color: rgba(255, 255, 255, 0.95); /* Leicht transparent */
+  backdrop-filter: blur(5px); /* Weichzeichner-Effekt */
 }
 
 .navbar.scrolled {
   padding: 0.75rem 0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08); /* Weicherer Schatten */
+  background-color: rgba(255, 255, 255, 0.98);
 }
 
 .navbar-content {
@@ -102,21 +131,47 @@ section {
 .navbar-logo img {
   height: 40px;
   width: auto;
+  transition: transform 0.3s ease;
+}
+.navbar-logo:hover img {
+    transform: scale(1.05);
 }
 
 .navbar-links {
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem; /* Etwas mehr Abstand */
 }
 
 .nav-link {
   color: var(--color-neutral-600);
+  font-weight: 500; /* Etwas fetter */
   transition: color 0.3s ease;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.nav-link::after { /* Subtile Unterstreichung beim Hover */
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-accent);
+    transition: width 0.3s ease;
 }
 
 .nav-link:hover {
   color: var(--color-neutral-700);
 }
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Aktiver Nav-Link (Beispiel, muss per JS gesetzt oder serverseitig generiert werden) */
+/* .nav-link.active { color: var(--color-accent); } */
+/* .nav-link.active::after { width: 100%; } */
+
 
 .menu-toggle {
   display: none;
@@ -131,7 +186,7 @@ section {
   width: 24px;
   height: 2px;
   background-color: var(--color-neutral-700);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Background-color für X */
 }
 
 .menu-icon::before,
@@ -141,27 +196,30 @@ section {
   width: 24px;
   height: 2px;
   background-color: var(--color-neutral-700);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, top 0.3s ease, bottom 0.3s ease;
 }
 
 .menu-icon::before {
-  top: -8px;
+  top: -7px; /* Etwas weniger Abstand */
 }
 
 .menu-icon::after {
-  top: 8px;
+  bottom: -7px; /* Etwas weniger Abstand und bottom statt top */
+  top: auto;
 }
 
 .menu-toggle.active .menu-icon {
-  transform: rotate(45deg);
+  background-color: transparent; /* Mittlere Linie ausblenden für X */
 }
 
 .menu-toggle.active .menu-icon::before {
-  transform: rotate(0) translateY(8px);
+  top: 0;
+  transform: rotate(45deg);
 }
 
 .menu-toggle.active .menu-icon::after {
-  transform: rotate(90deg) translateX(-8px);
+  bottom: 0;
+  transform: rotate(-45deg);
 }
 
 .mobile-menu {
@@ -171,9 +229,9 @@ section {
   left: 0;
   width: 100%;
   background-color: var(--color-white);
-  padding: 1rem 0;
-  border-top: 1px solid var(--color-neutral-100);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--color-neutral-200);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .mobile-menu.active {
@@ -183,7 +241,12 @@ section {
 .mobile-links {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem; /* Mehr Abstand */
+  align-items: center; /* Zentriert für besseres Aussehen */
+}
+.mobile-links .nav-link {
+    padding: 0.5rem 0;
+    font-size: 1.1rem;
 }
 
 /* Hero section styles */
@@ -194,64 +257,68 @@ section {
   margin: 0 auto;
   width: 100%;
   overflow: hidden;
-  padding-top: 100px;
+  padding-top: 120px; /* Mehr Platz für die größere Navbar */
   box-sizing: border-box;
+  display: flex; /* Zentrierung des Inhalts */
+  align-items: center; /* Zentrierung des Inhalts */
 }
 
 .hero .container {
   width: 100%;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
   position: relative;
   z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: calc(100vh - 100px);
+  /* min-height: calc(100vh - 120px); Weg, da Flex auf .hero */
 }
 
 .hero-content {
-  max-width: min(35rem, 48%);
+  max-width: min(38rem, 50%); /* Etwas breiter */
   text-align: left;
   width: 100%;
   padding: 0;
 }
 
 .hero h1 {
-  font-size: 3rem;
+  font-size: 3.25rem; /* Größer */
   margin-bottom: 1.5rem;
+  font-weight: 700; /* Fetter */
 }
 
 .hero p {
-  font-size: 1.25rem;
+  font-size: 1.3rem; /* Größer */
   color: var(--color-neutral-500);
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem; /* Mehr Abstand */
+  max-width: 90%; /* Verhindert zu lange Zeilen */
 }
 
 .hero-buttons {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   justify-content: flex-start;
 }
 
 .hero-background {
   position: absolute;
   top: 0;
-  right: 1rem;
+  right: 1.5rem; /* Container Padding beachten */
   width: 50%;
   height: 100%;
   background-image: url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
   background-size: cover;
   background-position: center;
   z-index: 1;
+  border-radius: 8px; /* Abgerundete Ecken für das Bild */
+  opacity: 0.9; /* Leicht gedämpft für besseren Textkontrast */
 }
 
 /* Typing Cursor */
 [data-cursor]::after {
   content: "|";
-  margin-left: 2px;
+  margin-left: 4px; /* Mehr Platz */
   opacity: 1;
-  animation: blink 1s step-end infinite;
+  animation: blink 0.9s step-end infinite;
   transition: opacity 1s ease-out;
+  color: var(--color-accent); /* Cursor in Akzentfarbe */
 }
 
 [data-cursor].cursor-fade-out::after {
@@ -264,42 +331,57 @@ section {
 }
 
 /* About section styles (Homepage & Details Page) */
-.about {
-  background-color: var(--color-white);
-  padding-top: 3rem;
+.about { /* Homepage "Über uns" Sektion */
+  background-color: var(--color-background-warm); /* Warmer Hintergrund */
+  padding-top: 6rem; /* Mehr Padding */
+  padding-bottom: 6rem;
 }
 
-.about-details {
+.about-details { /* Büro Detailseite */
   background-color: var(--color-white);
-  padding-top: 100px;
-  padding-bottom: 5rem;
+  padding-top: 120px; /* Mehr Platz für Navbar */
+  padding-bottom: 6rem;
 }
 
 .page-intro {
-    font-size: 1.1rem;
+    font-size: 1.15rem; /* Etwas größer */
     color: var(--color-neutral-500);
-    margin-top: -1rem;
-    margin-bottom: 3rem;
-    max-width: 50rem;
+    margin-top: -1.5rem;
+    margin-bottom: 3.5rem;
+    max-width: 55rem;
+    line-height: 1.7;
 }
 
-
 .section-header {
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
   text-align: left;
 }
 
 .section-header h1, .section-header h2 {
-  font-size: 2rem;
+  font-size: 2.25rem; /* Größer */
+  font-weight: 700;
+}
+.section-header h2::after { /* Subtile Linie unter Sektionsüberschriften */
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: var(--color-accent);
+    margin-top: 0.75rem;
+}
+.section-header.centered h2::after {
+    margin-left: auto;
+    margin-right: auto;
+}
+.about-details .section-header h1::after { /* Linie auch für H1 auf Detailseiten */
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: var(--color-accent);
+    margin-top: 0.75rem;
 }
 
-.section-header.centered {
-    text-align: center;
-}
-
-.about-details .section-header {
-    text-align: left;
-}
 
 .stats-overview {
   margin-bottom: 4rem;
@@ -309,12 +391,16 @@ section {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   text-align: center;
+  gap: 1px; /* Erzeugt dünne Linien zwischen Items durch den Hintergrund */
+  background-color: var(--color-neutral-200); /* Farbe der Linien */
   border-radius: 8px;
+  overflow: hidden; /* Für abgerundete Ecken mit Linien */
 }
 
 .stat-item {
-  padding: 1.5rem;
-  border-right: 1px solid var(--color-neutral-200);
+  padding: 2rem 1rem; /* Mehr Padding */
+  background-color: var(--color-white); /* Hintergrund für jedes Item */
+  /* border-right entfernt, da durch gap + background ersetzt */
 }
 
 .stat-item:last-child {
@@ -322,153 +408,179 @@ section {
 }
 
 .stat-item h3 {
-  font-size: 2.5rem;
+  font-size: 2.75rem;
   font-weight: 700;
+  color: var(--color-accent); /* Stats in Akzentfarbe */
   margin-bottom: 0.5rem;
+}
+.stat-item p {
+    font-weight: 500;
+    color: var(--color-neutral-600);
 }
 
 .about-summary {
-    max-width: 40rem;
-    margin: 0 auto 2.5rem auto;
+    max-width: 45rem; /* Etwas breiter */
+    margin: 0 auto 3rem auto;
     text-align: center;
 }
 
 .about-summary p {
-    font-size: 1.25rem;
-    color: var(--color-neutral-500);
+    font-size: 1.3rem; /* Größer */
+    color: var(--color-neutral-600); /* Etwas dunkler für besseren Kontrast auf hellem Grund */
+    line-height: 1.7;
 }
 
 .about-footer {
   text-align: center;
-  margin-top: 2.5rem;
+  margin-top: 3rem;
 }
 
-.about-link {
-  font-weight: 500;
-  color: var(--color-neutral-700);
-  border-bottom: 2px solid var(--color-neutral-700);
-  padding-bottom: 0.25rem;
-  transition: color 0.3s ease;
+.about-link { /* "Lernen Sie uns kennen" etc. */
+  font-weight: 600; /* Fetter */
+  color: var(--color-accent);
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 0.3rem;
+  transition: color 0.3s ease, border-color 0.3s ease;
+  font-size: 1.05rem;
 }
 
 .about-link:hover {
-  color: var(--color-neutral-600);
+  color: var(--color-accent-darker);
+  border-bottom-color: var(--color-accent-darker);
 }
 
 .about-columns {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    margin-bottom: 4rem;
+    gap: 4rem; /* Mehr Abstand */
+    margin-bottom: 5rem;
 }
 
 .about-column .about-section h3 {
-    font-size: 1.5rem;
+    font-size: 1.6rem; /* Größer */
     margin-bottom: 1.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--color-neutral-200);
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--color-accent); /* Akzentfarbe für Linie */
     display: inline-block;
 }
 
 .about-column .about-text {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.25rem;
 }
 
 .about-column .about-text p strong {
     color: var(--color-neutral-700);
+    font-weight: 600;
 }
 
 /* Team Section auf about.html */
 .team-section {
-    margin-top: 4rem;
-    padding-top: 4rem;
-    border-top: 1px solid var(--color-neutral-100);
+    margin-top: 5rem;
+    padding-top: 5rem;
+    border-top: 1px solid var(--color-neutral-200);
 }
 
 .team-section h2 {
     text-align: center;
-    margin-bottom: 3rem;
-    font-size: 1.8rem;
+    margin-bottom: 3.5rem;
+    font-size: 2rem; /* Größer */
+}
+.team-section h2::after { /* Linie für Sektionsüberschrift */
+    content: ''; display: block; width: 50px; height: 3px;
+    background-color: var(--color-accent); margin: 0.75rem auto 0;
 }
 
 .team-member-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Etwas breiter */
+    gap: 2.5rem;
 }
 
 .team-member-card {
     text-align: center;
     background-color: var(--color-white);
-    border-radius: 8px;
+    border-radius: 6px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07); /* Weicherer, präsenterer Schatten */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .team-member-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
+.team-member-photo { /* Hinzugefügt für besseres Bildhandling */
+    background-color: var(--color-neutral-100);
+    aspect-ratio: 3/4;
+    overflow: hidden;
+}
 .team-member-photo img {
     width: 100%;
-    height: auto;
-    aspect-ratio: 3/4;
+    height: 100%;
     object-fit: cover;
-    background-color: var(--color-neutral-100);
+    transition: transform 0.4s ease;
+}
+.team-member-card:hover .team-member-photo img {
+    transform: scale(1.05);
 }
 
 .team-member-info {
-    padding: 1rem 1rem 1.5rem;
+    padding: 1.25rem 1rem 1.75rem;
 }
 
 .team-member-info h4 {
-    font-size: 1.1rem;
-    margin-bottom: 0.25rem;
+    font-size: 1.15rem;
+    margin-bottom: 0.3rem;
     color: var(--color-neutral-700);
 }
 .team-member-info h4 strong {
     font-weight: 700;
+    color: var(--color-accent); /* Nachname in Akzentfarbe */
 }
 
 .team-member-info p {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--color-neutral-500);
 }
 
 
 /* Projects section styles */
-.projects {
-  background-color: var(--color-neutral-100); /* Für Homepage Section */
+.projects { /* Homepage Sektion */
+  background-color: var(--color-white); /* Nicht mehr neutral-100 */
 }
 
-.all-projects { /* Für die alle Projekte Seite (projects.html) */
-  padding-top: 100px;
-  padding-bottom: 5rem;
-  background-color: var(--color-white); /* Kann auch neutral-100 sein, je nach Wunsch */
+.all-projects { /* projects.html Seite */
+  padding-top: 120px;
+  padding-bottom: 6rem;
+  background-color: var(--color-white);
 }
 
-/* Gemeinsames Styling für beide Projekt-Grids */
-#projects .projects-grid, /* Grid auf der Homepage */
-.all-projects-grid {      /* Grid auf der projects.html Seite */
+#projects .projects-grid,
+.all-projects-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Standard: 4 Spalten */
-  gap: 1.5rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem; /* Mehr Abstand */
 }
 
-/* Link um die Projektkarte */
 .project-card-link {
-    display: block; /* Nimmt Platz ein */
-    text-decoration: none; /* Keine Unterstreichung */
+    display: block;
+    text-decoration: none;
+    border-radius: 6px; /* Abrundung für die ganze Karte */
+    overflow: hidden; /* Wichtig für abgerundete Ecken mit Bild */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.project-card-link:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transform: translateY(-5px);
 }
 
-.project-card {
-  display: block;
-  overflow: hidden;
-  cursor: pointer;
+.project-card { /* .project-card wird jetzt vom Link umschlossen */
+  display: block; /* Nimmt Platz ein */
+  /* Kein eigener Schatten oder Radius mehr, da vom Link übernommen */
 }
 
 .project-image {
@@ -481,68 +593,76 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.7s ease;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Sanftere Transition */
 }
 
-.project-card-link:hover .project-image img { /* Hover auf Link statt Karte */
-  transform: scale(1.05);
+.project-card-link:hover .project-image img {
+  transform: scale(1.08); /* Stärkerer Zoom */
 }
 
-.project-image::after {
+.project-image::after { /* Subtiler Gradient für Textlesbarkeit */
   content: '';
   position: absolute;
   inset: 0;
-  background-color: rgba(26, 31, 44, 0.2);
-  transition: background-color 0.3s ease;
+  background: linear-gradient(to top, rgba(26, 31, 44, 0.5) 0%, rgba(26, 31, 44, 0) 50%);
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
 }
 
-.project-card-link:hover .project-image::after { /* Hover auf Link statt Karte */
-  background-color: rgba(26, 31, 44, 0.4);
+.project-card-link:hover .project-image::after {
+  opacity: 1;
 }
 
 .project-info {
-  padding: 1.25rem 0 2.5rem;
+  padding: 1.5rem; /* Mehr Padding */
+  background-color: var(--color-white); /* Stellt sicher, dass der Text auf Weiß liegt */
 }
 
 .project-category {
   display: block;
-  font-size: 0.875rem;
-  color: var(--color-neutral-500);
-  margin-bottom: 0.5rem;
+  font-size: 0.85rem; /* Etwas kleiner */
+  color: var(--color-accent); /* Kategorie in Akzentfarbe */
+  font-weight: 500;
+  margin-bottom: 0.6rem;
+  text-transform: uppercase; /* Für einen Design-Touch */
+  letter-spacing: 0.5px;
 }
 
 .project-title {
-  font-size: 1.25rem;
-  font-weight: 500;
-  color: var(--color-neutral-700); /* Sicherstellen, dass Textfarbe stimmt */
+  font-size: 1.3rem; /* Größer */
+  font-weight: 600; /* Fetter */
+  color: var(--color-neutral-700);
+  line-height: 1.4;
 }
 
 .projects-footer {
   text-align: center;
-  margin-top: 2.5rem;
+  margin-top: 3.5rem;
 }
 
-.projects-link {
-  font-weight: 500;
-  color: var(--color-neutral-700);
-  border-bottom: 2px solid var(--color-neutral-700);
-  padding-bottom: 0.25rem;
-  transition: color 0.3s ease;
+.projects-link { /* "Alle Projekte ansehen" */
+  font-weight: 600;
+  color: var(--color-accent);
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 0.3rem;
+  font-size: 1.05rem;
+  transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 .projects-link:hover {
-  color: var(--color-neutral-600);
+  color: var(--color-accent-darker);
+  border-bottom-color: var(--color-accent-darker);
 }
 
-.all-projects .section-header { /* Header innerhalb der .all-projects Sektion */
+.all-projects .section-header {
     text-align: left;
-    margin-bottom: 3rem;
+    margin-bottom: 3.5rem;
 }
 
 /* Project Detail Page Styles */
 .project-detail-page {
-    padding-top: 100px;
-    padding-bottom: 5rem;
+    padding-top: 120px;
+    padding-bottom: 6rem;
 }
 
 .project-content-container {
@@ -551,183 +671,214 @@ section {
 }
 
 .project-header {
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     border-bottom: 1px solid var(--color-neutral-200);
-    padding-bottom: 1rem;
+    padding-bottom: 1.5rem;
 }
 
 .project-header h1 {
-    font-size: 2.5rem;
+    font-size: 2.75rem; /* Größer */
     color: var(--color-neutral-700);
+    font-weight: 700;
 }
 
 .project-description {
-    margin-bottom: 3rem;
-    line-height: 1.7;
+    margin-bottom: 3.5rem;
+    line-height: 1.8; /* Mehr Zeilenabstand */
     max-width: 800px;
+    font-size: 1.05rem; /* Etwas größerer Text */
 }
 
 .project-description p {
-    margin-bottom: 1em;
+    margin-bottom: 1.25em;
 }
 
 .project-gallery {
-    margin-bottom: 3rem;
+    margin-bottom: 3.5rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Größere Min-Breite */
+    gap: 1.5rem; /* Mehr Abstand */
 }
 
+.project-gallery-item { /* Wrapper für besseres Styling, falls benötigt */
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
 .project-gallery img {
     width: 100%;
     height: auto;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     display: block;
+    /* Radius und Schatten jetzt auf .project-gallery-item */
 }
 
 .back-link-container {
-    margin-top: 2rem;
+    margin-top: 3rem;
     text-align: center;
 }
 
 .back-link {
-    color: var(--color-neutral-600);
+    color: var(--color-accent);
     text-decoration: none;
-    font-weight: 500;
-    padding-bottom: 2px;
-    border-bottom: 1px solid transparent;
+    font-weight: 600;
+    padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
     transition: color 0.3s ease, border-color 0.3s ease;
+    font-size: 1.05rem;
 }
 
 .back-link:hover {
-    color: var(--color-neutral-700);
-    border-bottom-color: var(--color-neutral-700);
+    color: var(--color-accent-darker);
+    border-bottom-color: var(--color-accent-darker);
 }
 
 .project-error-message {
     text-align: center;
-    padding: 3rem 1rem;
+    padding: 4rem 1rem;
 }
 .project-error-message p {
-    margin-bottom: 1.5rem;
-    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    font-size: 1.15rem;
     color: var(--color-neutral-500);
 }
 
 
 /* Jobs section styles (auf jobs.html) */
 .jobs-page {
-  padding-top: 100px;
-  padding-bottom: 5rem;
-  background-color: var(--color-white);
+  padding-top: 120px;
+  padding-bottom: 6rem;
+  background-color: var(--color-background-warm); /* Warmer Hintergrund */
 }
 
 .jobs-page .section-header {
   text-align: left;
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
 }
 
 .jobs-page .section-header p {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     color: var(--color-neutral-500);
-    margin-top: 0.5rem;
+    margin-top: 0.75rem;
 }
 
 .jobs-list {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3rem;
-  max-width: 48rem;
+  gap: 2.5rem; /* Mehr Abstand */
+  max-width: 50rem; /* Etwas breiter */
   margin: 0 auto;
 }
 
 .job-card {
   background-color: var(--color-white);
-  padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  padding: 2.5rem; /* Mehr Padding */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07); /* Deutlicherer Schatten */
   border-radius: 8px;
+  border-left: 5px solid var(--color-accent); /* Akzentlinie links */
 }
 
 .job-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  font-size: 1.75rem; /* Größer */
+  margin-bottom: 1.25rem;
+  color: var(--color-neutral-700);
 }
 
 .job-description {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  color: var(--color-neutral-600);
 }
 
 /* Contact section styles */
 .contact {
   background-color: var(--color-white);
+  padding-bottom: 0; /* Kein Bottom-Padding, da Footer direkt folgt */
 }
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  grid-template-columns: 1fr 1.2fr; /* Bild etwas breiter */
+  gap: 4rem;
+  align-items: center; /* Vertikal zentrieren */
 }
 
 .contact h2 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
+  font-size: 2.25rem;
+  margin-bottom: 1rem;
+}
+.contact h2::after { /* Linie */
+    content: ''; display: block; width: 50px; height: 3px;
+    background-color: var(--color-accent); margin-top: 0.75rem;
 }
 
-.contact-info > p:first-of-type {
-  margin-bottom: 1.5rem;
+.contact-info > p:first-of-type { /* Einleitungstext */
+  margin-bottom: 2.5rem;
+  font-size: 1.1rem;
+  color: var(--color-neutral-500);
 }
 
 .contact-info .jobs-link-text {
-    margin-top: 1.5rem;
+    margin-top: 2.5rem;
     margin-bottom: 0;
     color: var(--color-neutral-600);
+    font-size: 1.05rem;
 }
 
-.contact-info .text-link {
-    color: var(--color-neutral-700);
-    text-decoration: underline;
-    font-weight: 500;
-    transition: color 0.3s ease;
+.contact-info .text-link { /* Für den Link zu Stellenangeboten */
+    color: var(--color-accent);
+    text-decoration: none; /* Keine Unterstreichung, Akzentfarbe reicht */
+    font-weight: 600;
+    border-bottom: 1px dashed var(--color-accent); /* Dezente gepunktete Linie */
+    transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 .contact-info .text-link:hover {
-    color: var(--color-neutral-500);
+    color: var(--color-accent-darker);
+    border-bottom-color: var(--color-accent-darker);
 }
 
 .contact-details {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 2.5rem;
+  gap: 2rem;
+  margin-top: 3rem;
 }
 
 .contact-item {
   display: flex;
   align-items: flex-start;
-  gap: 0.75rem;
+  gap: 1rem; /* Mehr Platz für Icon */
 }
 
 .contact-icon {
-  color: var(--color-neutral-500);
-  margin-top: 0.25rem;
+  color: var(--color-accent); /* Icon in Akzentfarbe */
+  margin-top: 0.35rem; /* Feinabstimmung vertikale Position */
+}
+.contact-icon svg {
+    width: 20px; /* Icons etwas größer */
+    height: 20px;
 }
 
 .contact-item h3 {
-  font-size: 1rem;
+  font-size: 1.1rem; /* Größer */
+  font-weight: 600;
   margin-bottom: 0.5rem;
+  color: var(--color-neutral-700);
+}
+.contact-item p {
+    line-height: 1.6;
 }
 
 .contact-image {
-  height: 100%;
-  background-color: var(--color-neutral-100);
-  padding: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: auto; /* Passt sich Inhalt an */
+  max-height: 500px; /* Maximale Höhe */
+  background-color: transparent; /* Kein eigener Hintergrund */
+  padding: 0; /* Kein Padding */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
 .contact-image img {
@@ -742,9 +893,10 @@ section {
   position: fixed;
   inset: 0;
   z-index: 2000;
-  background-color: var(--color-white);
+  background-color: rgba(255, 255, 255, 0.95); /* Leicht transparent */
+  backdrop-filter: blur(8px);
   overflow-y: auto;
-  padding: 6rem 0 3rem;
+  padding: 3rem 0; /* Weniger Padding, da Scrollbar */
 }
 
 .modal.active {
@@ -752,15 +904,24 @@ section {
 }
 
 .modal-content {
-  max-width: 48rem;
-  margin: 0 auto;
+  max-width: 50rem; /* Etwas breiter */
+  margin: 2rem auto; /* Oben/Unten Abstand für Scroll */
+  background-color: var(--color-white);
+  padding: 3rem;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
 }
 
 .modal h2 {
-  font-size: 2rem;
+  font-size: 2.25rem;
   margin-bottom: 2rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--color-neutral-200);
+  color: var(--color-neutral-700);
+}
+.modal h2::after {
+    content: ''; display: block; width: 40px; height: 3px;
+    background-color: var(--color-accent); margin-top: 0.75rem;
 }
 
 .impressum-content {
@@ -768,100 +929,252 @@ section {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  line-height: 1.7;
 }
 
 .impressum-content h3 {
-  font-size: 1.25rem;
-  margin: 2.5rem 0 1rem;
+  font-size: 1.3rem;
+  margin: 2rem 0 1rem;
+  color: var(--color-neutral-700);
+  font-weight: 600;
 }
 
 .copyright {
   margin-top: 2.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--color-neutral-200);
+  font-size: 0.9rem;
 }
 
 .modal-close {
   margin-top: 2.5rem;
+  /* Verwendet jetzt .btn.btn-secondary für grauen Button */
 }
 
 /* Footer styles (Minimalistisch) */
 .footer {
-  background-color: var(--color-white); /* Weißer Hintergrund */
-  color: var(--color-neutral-600); /* Dunkle Textfarbe */
-  padding: 2rem 0; /* Reduziertes Padding */
+  background-color: var(--color-neutral-700); /* Dunkler Hintergrund für Kontrast */
+  color: var(--color-neutral-300); /* Hellerer Text */
+  padding: 3rem 0;
+  margin-top: 6rem; /* Abstand zum Kontaktbereich oder anderen Inhalten */
 }
 
 .footer-bottom {
   text-align: center;
-  padding-top: 2rem; /* Abstand zur Linie */
-  border-top: 1px solid var(--color-black); /* Schwarze Linie */
-  color: var(--color-neutral-600); /* Dunkle Textfarbe */
-  font-size: 0.875rem;
+  padding-top: 0; /* Kein extra Padding oben, da schon in .footer */
+  border-top: none; /* Keine Linie mehr, da Hintergrund schon abgrenzt */
+  font-size: 0.9rem;
+}
+
+.footer-bottom p:first-child { /* Copyright Text */
+    margin-bottom: 0.75rem;
 }
 
 .footer-legal {
-  margin-top: 0.5rem;
-  margin-bottom: 1.5rem; /* Abstand zu Social Icons */
+  margin-top: 0.25rem; /* Weniger Abstand */
+  margin-bottom: 1.5rem;
 }
 
 .footer-legal a {
-  color: var(--color-neutral-600); /* Dunkle Linkfarbe */
-  text-decoration: underline; /* Unterstreichung für bessere Sichtbarkeit */
-  transition: color 0.3s ease;
+  color: var(--color-neutral-100); /* Helle Links auf dunklem Grund */
+  text-decoration: underline;
+  text-decoration-color: var(--color-neutral-400); /* Dezentere Unterstreichung */
+  transition: color 0.3s ease, text-decoration-color 0.3s ease;
 }
 
 .footer-legal a:hover {
-  color: var(--color-neutral-700); /* Etwas dunkler im Hover */
+  color: var(--color-white);
+  text-decoration-color: var(--color-white);
 }
 
-/* Social Icons im Footer Bottom */
 .footer-bottom .footer-social {
   display: flex;
-  justify-content: center; /* Zentrieren */
-  gap: 1.5rem; /* Etwas mehr Abstand */
-  margin-top: 1.5rem; /* Abstand nach oben */
+  justify-content: center;
+  gap: 1.75rem;
+  margin-top: 1.5rem;
 }
 
-.footer-bottom .social-icon {
-  color: var(--color-black); /* Schwarze Icons */
-  transition: color 0.3s ease;
+.footer-bottom .social-icon svg {
+  fill: var(--color-neutral-300); /* Icons füllen, falls sie keine stroke haben */
+  stroke: var(--color-neutral-300); /* Linienfarbe der Icons */
+  transition: fill 0.3s ease, stroke 0.3s ease;
+}
+.footer-bottom .social-icon:hover svg {
+  fill: var(--color-white);
+  stroke: var(--color-white);
+}
+/* --- styles.css Ergänzungen --- */
+
+/* Link um die Team-Mitglied-Karte */
+.team-member-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit; /* Vererbt Textfarbe, um Link-Blau zu vermeiden */
+  border-radius: 6px; /* Radius vom .team-member-card übernehmen */
+  overflow: hidden; /* Wichtig für Hover-Effekte und Radius */
+}
+.team-member-card-link:hover .team-member-card { /* Optional: leichter Effekt auf die Karte selbst */
+  /* Hier könnten spezifische Hover-Effekte für die Karte stehen,
+     aber die meisten sind schon auf .team-member-card definiert */
 }
 
-.footer-bottom .social-icon:hover {
-  color: var(--color-neutral-600); /* Dunkelgrau im Hover */
+
+/* Team Member Detail Page Styles */
+.team-member-detail-page {
+  padding-top: 120px; /* Platz für Navbar */
+  padding-bottom: 6rem;
+  background-color: var(--color-background-warm); /* Heller, warmer Hintergrund */
+}
+
+.team-member-header {
+  display: grid;
+  grid-template-columns: 250px 1fr; /* Spalte für Bild, Rest für Text */
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--color-neutral-200);
+}
+
+.team-member-detail-photo {
+  width: 250px;
+  height: 320px; /* Feste Höhe oder aspect-ratio verwenden */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.team-member-detail-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-member-intro h1 {
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: var(--color-neutral-700);
+  margin-bottom: 0.5rem;
+}
+
+.team-member-intro .position {
+  font-size: 1.25rem;
+  font-family: var(--font-secondary);
+  color: var(--color-accent);
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.contact-details-inline p {
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+}
+.contact-details-inline a {
+  color: var(--color-neutral-600);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--color-neutral-400);
+}
+.contact-details-inline a:hover {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+
+.team-member-description {
+  max-width: 800px; /* Lesbare Breite für längere Texte */
+  margin: 0 auto; /* Zentrieren, wenn max-width greift */
+  line-height: 1.8;
+  font-size: 1.05rem;
+  color: var(--color-neutral-600);
+}
+.team-member-description p {
+  margin-bottom: 1.25em;
+}
+.team-member-description h2, .team-member-description h3 { /* Falls du Zwischenüberschriften in der Beschreibung hast */
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+  color: var(--color-neutral-700);
+}
+
+
+/* Responsive Anpassungen für Team Detail Seite */
+@media (max-width: 768px) {
+  .team-member-header {
+      grid-template-columns: 1fr; /* Untereinander auf Mobil */
+      text-align: center;
+      gap: 2rem;
+  }
+  .team-member-detail-photo {
+      margin: 0 auto; /* Zentrieren des Bildes */
+      width: 200px; /* Bild kleiner auf Mobil */
+      height: 260px;
+  }
+  .team-member-intro h1 {
+      font-size: 2.25rem;
+  }
+  .team-member-intro .position {
+      font-size: 1.1rem;
+  }
 }
 
 /* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(15px); /* Etwas mehr Bewegung */
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+/* Einfache Scroll-Reveal Animation (optional, kann per JS getriggert werden) */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 /* Media Queries */
 @media (max-width: 1024px) {
   #projects .projects-grid,
   .all-projects-grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 Spalten für beide Grids */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
   }
    .team-member-grid {
-       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Kleinere Basis für Karten */
+       gap: 2rem;
+   }
+   .hero-content {
+       max-width: min(38rem, 100%); /* Auf kleineren Tablets volle Breite erlauben */
+       padding: 0 1rem; /* Sicherstellen, dass es nicht an den Rand klebt */
+   }
+   .hero-background {
+       width: 100%; /* Hintergrund nimmt volle Breite ein und ist hinter dem Text */
+       opacity: 0.3; /* Stärker gedämpft, damit Text lesbar bleibt */
+       right: 0;
+       border-radius: 0;
    }
 }
 
 @media (max-width: 992px) {
     .about-columns {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 3rem; /* Mehr Abstand auch im Einspalt-Layout */
     }
-    .about-column .about-text {
-        max-width: none;
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    .contact-image {
+        max-height: 350px; /* Bild nicht zu riesig auf Tablets */
+        margin-top: 2rem; /* Abstand zum Text */
     }
 }
 
@@ -880,20 +1193,16 @@ section {
   }
 
   .hero {
-    max-width: none;
-    margin: 0;
-    padding: 80px 1rem 3rem;
-    text-align: center;
-  }
-
-  .hero .container {
-    padding: 0;
+    padding-top: 100px; /* Weniger Padding oben */
+    text-align: center; /* Hero-Text zentrieren */
   }
 
   .hero-content {
     max-width: 100%;
-    padding: 0;
     text-align: center;
+  }
+  .hero-content p {
+      max-width: 100%;
   }
 
   .hero h1 {
@@ -901,7 +1210,7 @@ section {
   }
 
   .hero p {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
   }
 
   .hero-buttons {
@@ -909,138 +1218,148 @@ section {
   }
 
   .hero-background {
-    display: none;
+    display: none; /* Auf Mobil ganz ausblenden oder sehr dezent */
   }
 
   .stats-grid {
     grid-template-columns: 1fr;
+    gap: 1px;
   }
 
   .stat-item {
     padding: 1.5rem 1rem;
     border-right: none;
-    border-bottom: 1px solid var(--color-neutral-200);
+    /* border-bottom wird durch gap + background ersetzt */
   }
-
   .stat-item:last-child {
     border-bottom: none;
   }
 
+
   .about-summary {
       max-width: 90%;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
   }
 
   .about-summary p {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
   }
 
   .about-details,
   .all-projects,
   .jobs-page,
   .project-detail-page {
-      padding-top: 80px;
-      padding-bottom: 3rem;
+      padding-top: 100px; /* Konsistentes Padding oben */
+      padding-bottom: 4rem;
   }
 
   .team-member-grid {
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 1.5rem;
   }
 
   #projects .projects-grid,
   .all-projects-grid {
-     grid-template-columns: repeat(2, 1fr); /* 2 Spalten für beide Grids */
-    gap: 1rem;
+     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem; /* Mehr Gap auch mobil */
   }
 
    .project-gallery {
-       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Größer auf Mobil */
+       gap: 1rem;
     }
 
-
-  .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-   section:not(.jobs-page):not(.about-details):not(.all-projects):not(.project-detail-page) {
-     padding: 3rem 0;
+   section { /* Globales Section Padding für Mobil reduzieren */
+     padding: 4rem 0;
+   }
+   /* Ausnahmen für spezielle Sektionen beibehalten */
+   section.jobs-page, section.about-details, section.all-projects, section.project-detail-page {
+       padding-top: 100px;
+       padding-bottom: 4rem;
    }
 
+
    .modal {
-     padding: 4rem 0 2rem;
+     padding: 2rem 0;
+   }
+   .modal-content {
+       margin: 1rem;
+       padding: 2rem;
+   }
+   .footer {
+       padding: 2rem 0;
+       margin-top: 4rem;
    }
 
 }
 
 @media (max-width: 576px) {
-   /*
-     Auf kleinsten Screens sollen beide Grids (Homepage und Alle Projekte)
-     zwei Spalten haben, um konsistent zu sein.
-   */
-   #projects .projects-grid, /* Homepage Grid */
-   .all-projects-grid {     /* Alle Projekte Seite Grid */
-     grid-template-columns: repeat(2, 1fr);
-     gap: 1rem;
+   #projects .projects-grid,
+   .all-projects-grid {
+     grid-template-columns: 1fr; /* Eine Spalte auf kleinsten Screens für Projektübersichten */
+     gap: 2rem; /* Mehr Abstand, wenn einspaltig */
    }
 
-    .project-gallery {
-       grid-template-columns: 1fr; /* Eine Spalte auf kleinsten Screens für Detailseiten-Galerie */
+    .project-gallery { /* Detailseiten-Galerie */
+       grid-template-columns: 1fr;
        gap: 1.5rem;
     }
 
    .hero h1 {
-     font-size: 1.75rem;
+     font-size: 2rem;
    }
 
    .hero p {
-     font-size: 1rem;
+     font-size: 1.05rem;
    }
 
    .about-summary p {
-       font-size: 1rem;
+       font-size: 1.05rem;
    }
 
     .team-member-grid {
-      grid-template-columns: repeat(2, 1fr); 
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Noch kleinere Basis */
       gap: 1rem;
    }
 
+   .job-card {
+       padding: 1.5rem;
+   }
    .job-card h3 {
-     font-size: 1.25rem;
+     font-size: 1.3rem;
    }
 
-    .stat-item {
-      padding: 1rem 0.5rem;
-    }
+    .stat-item h3 { font-size: 2.25rem; }
 
-    .stats-grid {
-        gap: 0;
-    }
 
     .about-details,
     .all-projects,
     .jobs-page,
     .project-detail-page {
-        padding-top: 70px;
+        padding-top: 90px; /* Etwas weniger für kleinere Nav */
     }
 
     .page-intro {
         font-size: 1rem;
     }
+    .section-header h1, .section-header h2 { font-size: 1.8rem; }
+    .about-details .section-header h1::after, .section-header h2::after { width: 40px; height: 2px; }
+
 
     .about-columns {
-        gap: 1.5rem;
+        gap: 2rem;
     }
 
     .about-section h3 {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
     }
 
      .project-header h1 {
-        font-size: 1.75rem;
+        font-size: 2rem;
     }
+     .project-description { font-size: 1rem; }
+     .modal h2 { font-size: 1.8rem; }
+     .modal h2::after { width: 30px; height: 2px;}
 }
 
 @media (min-width: 769px) {
@@ -1048,4 +1367,5 @@ section {
     display: none;
   }
 }
+
 /* --- END OF FILE styles.css --- */
